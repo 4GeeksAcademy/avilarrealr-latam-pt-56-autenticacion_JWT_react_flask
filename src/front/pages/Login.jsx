@@ -22,13 +22,17 @@ export function Login() {
 			const response = await fetch(url, {
 				method: "POST",
 				headers: {
-					"Content-Type": "application/json"
+					"Content-Type": "application/json",
 				},
 				body: JSON.stringify(dataToSend)
 			});
 
-			if (response.status === 200) {
-				const data = await response.json();
+			const data = await response.json();
+
+			if (response.status === 201) {
+				if (data.token) {
+					localStorage.setItem("token", data.token);
+				}
 
 				dispatch({
 					type: "SET_CURRENT_USER",
@@ -37,11 +41,10 @@ export function Login() {
 				navigate("/private");
 
 			} else if (response.status === 401) {
-				alert("INVALID CREDENTIALS");
+				alert(data.message || "Credenciales inválidas. Inténtalo de nuevo.");
 
 			} else {
-				const errorData = await response.json();
-				alert(`Error de inicio de sesión: ${errorData.message || response.statusText}`);
+				alert(`Error de inicio de sesión: ${data.message || response.statusText}`);
 			}
 
 		} catch (error) {

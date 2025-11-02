@@ -65,7 +65,7 @@ export const SingUp = () => {
         >
             <SingUpHeader label="Create account" />
             <InputUsername onSubmitAction={createUser} label="Create account" />
-            <p className="py-3">¿Already have an account? <Link to={"/"}>Login</Link></p>
+            <p className="py-3">¿Already have an account? <Link to={"/login"}>Login</Link></p>
         </div>
     )
 } 

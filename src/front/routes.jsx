@@ -9,6 +9,7 @@ import { Layout } from "./pages/Layout";
 import { Private } from "./pages/Private";
 import { SingUp } from "./pages/SingUp"
 import { Login } from "./pages/Login";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,8 +24,16 @@ export const router = createBrowserRouter(
 
       {/* Nested Routes: Defines sub-routes within the BaseHome component. */}
       <Route path="/singup" element={<SingUp />} />
-      <Route path="/" element={<Login />} />
-      <Route path="/private" element={<Private />} />
+      <Route index element={<Login />} />
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/private"
+        element={
+          <ProtectedRoute>
+            <Private />
+          </ProtectedRoute>
+        }
+      />
     </Route>
   )
 );
