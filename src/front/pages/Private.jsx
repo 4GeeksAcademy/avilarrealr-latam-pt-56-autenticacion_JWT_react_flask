@@ -7,7 +7,7 @@ export function Private() {
     async function accessPrivate() {
         const token = localStorage.getItem("token");
 
-        const url = "https://repulsive-orb-9777r6jxwwg52p9vp-3001.app.github.dev/api/private";
+        const url = `${import.meta.env.VARIABLE_NAME}/api/private`;
 
         const response = await fetch(url, {
             method: "GET",

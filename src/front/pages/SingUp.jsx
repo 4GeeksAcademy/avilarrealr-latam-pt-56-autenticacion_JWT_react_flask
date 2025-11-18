@@ -12,7 +12,7 @@ export const SingUp = () => {
 
 
     async function createUser({ email, password }) {
-        const url = "https://repulsive-orb-9777r6jxwwg52p9vp-3001.app.github.dev/api/user";
+        const url = `${import.meta.env.VARIABLE_NAME}/api/user`;
 
         const dataToSend = {
             email: email,

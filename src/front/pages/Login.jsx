@@ -11,7 +11,7 @@ export function Login() {
 
 
 	async function userLogin({ email, password }) {
-		const url = "https://repulsive-orb-9777r6jxwwg52p9vp-3001.app.github.dev/api/token";
+		const url = `${import.meta.env.VARIABLE_NAME}/api/token`;
 
 		const dataToSend = {
 			email: email,
