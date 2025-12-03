@@ -35,6 +35,7 @@ export const SingUp = () => {
                     type: "SET_CURRENT_USER",
                     payload: email
                 });
+                alert("User create successfully")
                 navigate("/login");
 
             } else if (response.status === 409) {
