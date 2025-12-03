@@ -12,7 +12,7 @@ export const SingUp = () => {
 
 
     async function createUser({ email, password }) {
-        const url = `${import.meta.env.VARIABLE_NAME}/api/user`;
+        const url = `${import.meta.env.VITE_BACKEND_URL}/api/user`;
 
         const dataToSend = {
             email: email,
@@ -35,7 +35,7 @@ export const SingUp = () => {
                     type: "SET_CURRENT_USER",
                     payload: email
                 });
-                navigate("/private");
+                navigate("/login");
 
             } else if (response.status === 409) {
                 alert(`Error: el usuario ${email} ya existe.`);

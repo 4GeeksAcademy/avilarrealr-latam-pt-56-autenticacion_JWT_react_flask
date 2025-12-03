@@ -99,7 +99,7 @@ def create_token():
         "message": "Login successfull",
         "user_email": user.email,
         "token": access_token
-    }), 201
+    }), 200
 
 
 @api.route('/private', methods=['GET'])
@@ -108,4 +108,7 @@ def protected():
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
 
-    return jsonify({"id": user.id, "username": user.username}), 200
+    return jsonify({"id": user.id}), 200
+
+
+

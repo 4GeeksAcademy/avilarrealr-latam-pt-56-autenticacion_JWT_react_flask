@@ -4,10 +4,16 @@ import { useNavigate } from 'react-router-dom';
 export function Private() {
     const navigate = useNavigate();
 
+    function handleLogout() {
+        localStorage.removeItem("token");
+        navigate("/login");
+        alert("Sesión cerrada exitosamente.");
+    }
+
     async function accessPrivate() {
         const token = localStorage.getItem("token");
 
-        const url = `${import.meta.env.VARIABLE_NAME}/api/private`;
+        const url = `${import.meta.env.VITE_BACKEND_URL}/api/private`;
 
         const response = await fetch(url, {
             method: "GET",
@@ -33,6 +39,9 @@ export function Private() {
         <div>
             <h2>Private Page 🤫</h2>
             <p>If you see this, your token is valid and you access to the route /private.</p>
+            <button className='btn btn-outline-danger btn-sm' onClick={handleLogout}>
+                Logout
+            </button>
         </div>
     );
 }

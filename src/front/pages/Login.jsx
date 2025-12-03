@@ -11,7 +11,7 @@ export function Login() {
 
 
 	async function userLogin({ email, password }) {
-		const url = `${import.meta.env.VARIABLE_NAME}/api/token`;
+		const url = `${import.meta.env.VITE_BACKEND_URL}/api/token`;
 
 		const dataToSend = {
 			email: email,
@@ -29,7 +29,7 @@ export function Login() {
 
 			const data = await response.json();
 
-			if (response.status === 201) {
+			if (response.status === 200) {
 				if (data.token) {
 					localStorage.setItem("token", data.token);
 				}
